@@ -5,17 +5,19 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Requests
+namespace Server.Events.Authorization
 {
     [DataContract]
-    public abstract class Request
+    public class UserRegisteredEventArgs : ServerEventArgs
     {
         [DataMember]
-        public Guid Id { get; set; }
+        public string Login { get; set; }
 
-        public Request(Guid id)
+        public UserRegisteredEventArgs(Guid id, string login)
+            : base(id)
         {
             Id = id;
+            Login = login;
         }
     }
 }

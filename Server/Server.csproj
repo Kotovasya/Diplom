@@ -72,6 +72,11 @@
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Data\DatabaseContext.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
+    <Compile Include="Events\Authorization\UserLoginedEventArgs.cs" />
+    <Compile Include="Events\Authorization\UserRegisteredEventArgs.cs" />
+    <Compile Include="Events\ServerEventArgs.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Enitites\Message.cs" />
     <Compile Include="Models\Enitites\User.cs" />
     <Compile Include="GlobalService.cs" />
     <Compile Include="Models\ServerModel.cs" />
@@ -84,6 +89,7 @@
     <Compile Include="Responses\Authorization\AuthorizationResponse.cs" />
     <Compile Include="Responses\Authorization\RegistrationResponse.cs" />
     <Compile Include="Responses\Authorization\ResponseId.cs" />
+    <Compile Include="Services\IMessageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

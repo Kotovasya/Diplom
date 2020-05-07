@@ -5,15 +5,15 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.Requests
+namespace Server.Events
 {
     [DataContract]
-    public abstract class Request
+    public class ServerEventArgs : EventArgs
     {
         [DataMember]
         public Guid Id { get; set; }
 
-        public Request(Guid id)
+        public ServerEventArgs(Guid id)
         {
             Id = id;
         }

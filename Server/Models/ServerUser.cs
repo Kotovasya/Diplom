@@ -61,9 +61,10 @@ namespace Server.Models
         public ConnectionId Connection { get; set; }
         public OperationContext OperationContext { get; set; }
 
-        public ServerUser(ref ConnectionId connection)
+        public ServerUser(ConnectionId connection, OperationContext context)
         {
             Connection = connection;
+            OperationContext = context;
         }
     }
 }

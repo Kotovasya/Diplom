@@ -3,6 +3,7 @@
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Authorization" />
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Authorization" />
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" />
   <xs:element name="Registration">
     <xs:complexType>
       <xs:sequence>
@@ -41,6 +42,40 @@
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConnectResult" type="q5:guid" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserRegistered">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" minOccurs="0" name="args" nillable="true" type="q6:UserRegisteredEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserRegisteredResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserLogined">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" minOccurs="0" name="args" nillable="true" type="q7:UserLoginedEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserLoginedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BlaBlac">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BlaBlacResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

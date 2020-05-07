@@ -22,6 +22,6 @@ namespace Server.Responses.Authorization
         WrongPassword = 8,
 
         [EnumMember]
-        ServerException = 8,
+        ServerException = 16,
     }
 }

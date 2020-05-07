@@ -1,4 +1,5 @@
 ﻿using Server.Data;
+using Server.Events.Authorization;
 using Server.Models.Entities;
 using Server.Requests.Authorization;
 using Server.Responses.Authorization;
@@ -13,6 +14,7 @@ namespace Server.Controllers
     public class AuthorizationController
     {
         private DatabaseContext _context;
+
         public AuthorizationController(DatabaseContext context)
         {
             _context = context;
@@ -50,6 +52,7 @@ namespace Server.Controllers
                     return new AuthorizationResponse(ResponseId.WrongPassword, request.Id);
                 
                 Console.WriteLine("Пользователь {0} авторизовался (подключение № {1})", request.Login, request.Id);
+
                 return new AuthorizationResponse(ResponseId.Succesfully, authUser.Id);
             }
             catch(Exception e)

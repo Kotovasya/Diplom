@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Server.Events" />
+  <xs:complexType name="UserRegisteredEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Server.Events" base="q1:ServerEventArgs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserRegisteredEventArgs" nillable="true" type="tns:UserRegisteredEventArgs" />
+  <xs:complexType name="UserLoginedEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Server.Events" base="q2:ServerEventArgs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserLoginedEventArgs" nillable="true" type="tns:UserLoginedEventArgs" />
+</xs:schema>

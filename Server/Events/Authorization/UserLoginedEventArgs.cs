@@ -5,21 +5,18 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.Requests.Authorization
+namespace Server.Events.Authorization
 {
     [DataContract]
-    public class RegistrationRequest : Request
+    public class UserLoginedEventArgs : ServerEventArgs
     {
         [DataMember]
         public string Login { get; set; }
-        [DataMember]
-        public string Password { get; set; }
 
-        public RegistrationRequest(Guid id, string login, string password)
+        public UserLoginedEventArgs(Guid id, string login)
             : base(id)
         {
             Login = login;
-            Password = password;
         }
     }
 }

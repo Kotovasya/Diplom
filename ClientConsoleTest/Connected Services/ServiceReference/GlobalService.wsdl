@@ -34,8 +34,11 @@
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Authorization" />
-      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd3" namespace="http://Server" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Server.Requests" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Authorization" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Server.Events" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthorizationService_Registration_InputMessage">
@@ -56,6 +59,24 @@
   <wsdl:message name="IAuthorizationService_Connect_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConnectResponse" />
   </wsdl:message>
+  <wsdl:message name="IAuthorizationService_OnUserRegistered_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserRegistered" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_OnUserRegistered_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserRegisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_OnUserLogined_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserLogined" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_OnUserLogined_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserLoginedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_BlaBlac_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:BlaBlac" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_BlaBlac_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:BlaBlacResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAuthorizationService">
     <wsdl:operation name="Registration">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/Registration" message="tns:IAuthorizationService_Registration_InputMessage" />
@@ -68,6 +89,18 @@
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/Connect" message="tns:IAuthorizationService_Connect_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/ConnectResponse" message="tns:IAuthorizationService_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnUserRegistered">
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/OnUserRegistered" message="tns:IAuthorizationService_OnUserRegistered_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/OnUserRegisteredResponse" message="tns:IAuthorizationService_OnUserRegistered_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnUserLogined">
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/OnUserLogined" message="tns:IAuthorizationService_OnUserLogined_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/OnUserLoginedResponse" message="tns:IAuthorizationService_OnUserLogined_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlaBlac">
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/BlaBlac" message="tns:IAuthorizationService_BlaBlac_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/BlaBlacResponse" message="tns:IAuthorizationService_BlaBlac_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IAuthorizationService" type="tns:IAuthorizationService">
@@ -93,6 +126,33 @@
     </wsdl:operation>
     <wsdl:operation name="Connect">
       <soap12:operation soapAction="http://tempuri.org/IAuthorizationService/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnUserRegistered">
+      <soap12:operation soapAction="http://tempuri.org/IAuthorizationService/OnUserRegistered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnUserLogined">
+      <soap12:operation soapAction="http://tempuri.org/IAuthorizationService/OnUserLogined" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlaBlac">
+      <soap12:operation soapAction="http://tempuri.org/IAuthorizationService/BlaBlac" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
