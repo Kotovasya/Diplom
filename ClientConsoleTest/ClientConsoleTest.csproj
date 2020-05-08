@@ -61,6 +61,9 @@
     <None Include="Connected Services\ServiceReference\ClientConsoleTest.ServiceReference.RegistrationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\ClientConsoleTest.ServiceReference.SendMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\GlobalService.wsdl" />
     <None Include="Connected Services\ServiceReference\item.xsd">
       <SubType>Designer</SubType>
@@ -101,6 +104,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\item52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item7.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\Reference.svcmap">

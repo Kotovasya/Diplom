@@ -4,13 +4,13 @@
   <xs:complexType name="RegistrationResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="Result" type="tns:ResponseId" />
+      <xs:element minOccurs="0" name="Result" type="tns:AuthorizationResponseId" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RegistrationResponse" nillable="true" type="tns:RegistrationResponse" />
-  <xs:simpleType name="ResponseId">
+  <xs:simpleType name="AuthorizationResponseId">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Succesfully">
+      <xs:enumeration value="Successfully">
         <xs:annotation>
           <xs:appinfo>
             <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
@@ -47,11 +47,11 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="ResponseId" nillable="true" type="tns:ResponseId" />
+  <xs:element name="AuthorizationResponseId" nillable="true" type="tns:AuthorizationResponseId" />
   <xs:complexType name="AuthorizationResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="Result" type="tns:ResponseId" />
+      <xs:element minOccurs="0" name="Result" type="tns:AuthorizationResponseId" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AuthorizationResponse" nillable="true" type="tns:AuthorizationResponse" />

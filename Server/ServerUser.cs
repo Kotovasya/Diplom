@@ -5,13 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 
-namespace Server.Models
+namespace Server
 {
     public struct ConnectionId : IEquatable<ConnectionId>
     {
         #region fields/constructor
-        public static readonly ConnectionId Empty = new ConnectionId();
-
         public Guid Id { get; private set; }
 
         public bool IsTemporary { get; set; }
@@ -59,11 +57,13 @@ namespace Server.Models
     public class ServerUser
     {
         public ConnectionId Connection { get; set; }
+        public string Login { get; set; }
         public OperationContext OperationContext { get; set; }
 
-        public ServerUser(ConnectionId connection, OperationContext context)
+        public ServerUser(ConnectionId connection, string login, OperationContext context)
         {
             Connection = connection;
+            Login = login;
             OperationContext = context;
         }
     }

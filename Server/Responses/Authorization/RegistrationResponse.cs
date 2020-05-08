@@ -11,11 +11,11 @@ namespace Server.Responses.Authorization
     public class RegistrationResponse
     {
         [DataMember]
-        public ResponseId Result { get; set; }
+        public AuthorizationResponseId Result { get; set; }
         [DataMember]
         public Guid Id { get; set; }
 
-        public RegistrationResponse(ResponseId result, Guid id)
+        public RegistrationResponse(AuthorizationResponseId result, Guid id)
         {
             Result = result;
             Id = id;

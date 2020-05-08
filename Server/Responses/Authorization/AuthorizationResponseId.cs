@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace Server.Responses.Authorization
 {
     [DataContract]
-    public enum ResponseId
+    public enum AuthorizationResponseId
     {
         [EnumMember]
-        Succesfully = 1,
+        Successfully = 1,
 
         [EnumMember]
         AlreadyRegister = 2,

@@ -18,6 +18,7 @@ namespace ClientConsoleTest.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="Request", Namespace="http://schemas.datacontract.org/2004/07/Server.Requests")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientConsoleTest.ServiceReference.AuthorizationRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientConsoleTest.ServiceReference.SendMessageRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientConsoleTest.ServiceReference.RegistrationRequest))]
     public partial class Request : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -101,6 +102,29 @@ namespace ClientConsoleTest.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendMessageRequest", Namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Messaging")]
+    [System.SerializableAttribute()]
+    public partial class SendMessageRequest : ClientConsoleTest.ServiceReference.Request {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RegistrationRequest", Namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Authorization")]
     [System.SerializableAttribute()]
     public partial class RegistrationRequest : ClientConsoleTest.ServiceReference.Request {
@@ -151,7 +175,7 @@ namespace ClientConsoleTest.ServiceReference {
         private System.Guid IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ClientConsoleTest.ServiceReference.ResponseId ResultField;
+        private ClientConsoleTest.ServiceReference.AuthorizationResponseId ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -177,7 +201,7 @@ namespace ClientConsoleTest.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ClientConsoleTest.ServiceReference.ResponseId Result {
+        public ClientConsoleTest.ServiceReference.AuthorizationResponseId Result {
             get {
                 return this.ResultField;
             }
@@ -200,11 +224,11 @@ namespace ClientConsoleTest.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseId", Namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Authorization")]
-    public enum ResponseId : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="AuthorizationResponseId", Namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Authorization")]
+    public enum AuthorizationResponseId : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Succesfully = 1,
+        Successfully = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         AlreadyRegister = 2,
@@ -232,7 +256,7 @@ namespace ClientConsoleTest.ServiceReference {
         private System.Guid IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ClientConsoleTest.ServiceReference.ResponseId ResultField;
+        private ClientConsoleTest.ServiceReference.AuthorizationResponseId ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -258,7 +282,7 @@ namespace ClientConsoleTest.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ClientConsoleTest.ServiceReference.ResponseId Result {
+        public ClientConsoleTest.ServiceReference.AuthorizationResponseId Result {
             get {
                 return this.ResultField;
             }
@@ -285,6 +309,7 @@ namespace ClientConsoleTest.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="ServerEventArgs", Namespace="http://schemas.datacontract.org/2004/07/Server.Events")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientConsoleTest.ServiceReference.UserLoginedEventArgs))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientConsoleTest.ServiceReference.SendedMessageEventArgs))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientConsoleTest.ServiceReference.UserRegisteredEventArgs))]
     public partial class ServerEventArgs : System.EventArgs, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -352,6 +377,45 @@ namespace ClientConsoleTest.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendedMessageEventArgs", Namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging")]
+    [System.SerializableAttribute()]
+    public partial class SendedMessageEventArgs : ClientConsoleTest.ServiceReference.ServerEventArgs {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SenderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Sender {
+            get {
+                return this.SenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SenderField, value) != true)) {
+                    this.SenderField = value;
+                    this.RaisePropertyChanged("Sender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserRegisteredEventArgs", Namespace="http://schemas.datacontract.org/2004/07/Server.Events.Authorization")]
     [System.SerializableAttribute()]
     public partial class UserRegisteredEventArgs : ClientConsoleTest.ServiceReference.ServerEventArgs {
@@ -373,9 +437,65 @@ namespace ClientConsoleTest.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendMessageResponse", Namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging")]
+    [System.SerializableAttribute()]
+    public partial class SendMessageResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClientConsoleTest.ServiceReference.MessagingResponseId ResultField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ClientConsoleTest.ServiceReference.MessagingResponseId Result {
+            get {
+                return this.ResultField;
+            }
+            set {
+                if ((this.ResultField.Equals(value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessagingResponseId", Namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging")]
+    public enum MessagingResponseId : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Successfully = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ServerException = 16,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IAuthorizationService", CallbackContract=typeof(ClientConsoleTest.ServiceReference.IAuthorizationServiceCallback))]
-    public interface IAuthorizationService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IGlobalService", CallbackContract=typeof(ClientConsoleTest.ServiceReference.IGlobalServiceCallback))]
+    public interface IGlobalService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthorizationService/Registration", ReplyAction="http://tempuri.org/IAuthorizationService/RegistrationResponse")]
         ClientConsoleTest.ServiceReference.RegistrationResponse Registration(ClientConsoleTest.ServiceReference.RegistrationRequest request);
@@ -394,46 +514,52 @@ namespace ClientConsoleTest.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthorizationService/Connect", ReplyAction="http://tempuri.org/IAuthorizationService/ConnectResponse")]
         System.Threading.Tasks.Task<System.Guid> ConnectAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessagingService/SendMessage", ReplyAction="http://tempuri.org/IMessagingService/SendMessageResponse")]
+        ClientConsoleTest.ServiceReference.SendMessageResponse SendMessage(ClientConsoleTest.ServiceReference.SendMessageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessagingService/SendMessage", ReplyAction="http://tempuri.org/IMessagingService/SendMessageResponse")]
+        System.Threading.Tasks.Task<ClientConsoleTest.ServiceReference.SendMessageResponse> SendMessageAsync(ClientConsoleTest.ServiceReference.SendMessageRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAuthorizationServiceCallback {
+    public interface IGlobalServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthorizationService/OnUserRegistered", ReplyAction="http://tempuri.org/IAuthorizationService/OnUserRegisteredResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAuthorizationService/OnUserRegistered")]
         void OnUserRegistered(ClientConsoleTest.ServiceReference.UserRegisteredEventArgs args);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthorizationService/OnUserLogined", ReplyAction="http://tempuri.org/IAuthorizationService/OnUserLoginedResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAuthorizationService/OnUserLogined")]
         void OnUserLogined(ClientConsoleTest.ServiceReference.UserLoginedEventArgs args);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthorizationService/BlaBlac", ReplyAction="http://tempuri.org/IAuthorizationService/BlaBlacResponse")]
-        void BlaBlac();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMessagingService/OnSendedMessage")]
+        void OnSendedMessage(ClientConsoleTest.ServiceReference.SendedMessageEventArgs args);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAuthorizationServiceChannel : ClientConsoleTest.ServiceReference.IAuthorizationService, System.ServiceModel.IClientChannel {
+    public interface IGlobalServiceChannel : ClientConsoleTest.ServiceReference.IGlobalService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AuthorizationServiceClient : System.ServiceModel.DuplexClientBase<ClientConsoleTest.ServiceReference.IAuthorizationService>, ClientConsoleTest.ServiceReference.IAuthorizationService {
+    public partial class GlobalServiceClient : System.ServiceModel.DuplexClientBase<ClientConsoleTest.ServiceReference.IGlobalService>, ClientConsoleTest.ServiceReference.IGlobalService {
         
-        public AuthorizationServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public GlobalServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public AuthorizationServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public GlobalServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public AuthorizationServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public GlobalServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public AuthorizationServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GlobalServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public AuthorizationServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GlobalServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
@@ -459,6 +585,14 @@ namespace ClientConsoleTest.ServiceReference {
         
         public System.Threading.Tasks.Task<System.Guid> ConnectAsync() {
             return base.Channel.ConnectAsync();
+        }
+        
+        public ClientConsoleTest.ServiceReference.SendMessageResponse SendMessage(ClientConsoleTest.ServiceReference.SendMessageRequest request) {
+            return base.Channel.SendMessage(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClientConsoleTest.ServiceReference.SendMessageResponse> SendMessageAsync(ClientConsoleTest.ServiceReference.SendMessageRequest request) {
+            return base.Channel.SendMessageAsync(request);
         }
     }
 }

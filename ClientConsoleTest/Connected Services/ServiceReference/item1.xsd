@@ -4,6 +4,9 @@
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Authorization" />
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Messaging" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
   <xs:element name="Registration">
     <xs:complexType>
       <xs:sequence>
@@ -51,11 +54,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="OnUserRegisteredResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="OnUserLogined">
     <xs:complexType>
       <xs:sequence>
@@ -63,19 +61,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="OnUserLoginedResponse">
+  <xs:element name="SendMessage">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Server.Requests.Messaging" minOccurs="0" name="request" nillable="true" type="q8:SendMessageRequest" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BlaBlac">
+  <xs:element name="SendMessageResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging" minOccurs="0" name="SendMessageResult" nillable="true" type="q9:SendMessageResponse" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BlaBlacResponse">
+  <xs:element name="OnSendedMessage">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" minOccurs="0" name="args" nillable="true" type="q10:SendedMessageEventArgs" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

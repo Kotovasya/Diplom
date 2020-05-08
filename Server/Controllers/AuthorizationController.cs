@@ -1,6 +1,5 @@
 ﻿using Server.Data;
 using Server.Events.Authorization;
-using Server.Models.Entities;
 using Server.Requests.Authorization;
 using Server.Responses.Authorization;
 using System;
@@ -11,32 +10,30 @@ using System.Threading.Tasks;
 
 namespace Server.Controllers
 {
-    public class AuthorizationController
+    public class AuthorizationController : Controller
     {
-        private DatabaseContext _context;
-
         public AuthorizationController(DatabaseContext context)
+            : base(context)
         {
-            _context = context;
         }
 
         public RegistrationResponse RegisterUser(RegistrationRequest request)
         {
             try
             {
-                if (_context.Users.Any(u => u.Login.ToLower() == request.Login.ToLower()))
-                    return new RegistrationResponse(ResponseId.AlreadyRegister, request.Id);
+                if (Context.Users.Any(u => u.Login.ToLower() == request.Login.ToLower()))
+                    return new RegistrationResponse(AuthorizationResponseId.AlreadyRegister, request.Id);
 
                 Console.WriteLine("Пользователь {0} зарегистрирован (подключение № {1})", request.Login, request.Id);
-                _context.Users.Add(new User(request.Id, request.Login, request.Password));
-                _context.SaveChangesAsync();
+                Context.Users.Add(new User(request.Id, request.Login, request.Password));
+                Context.SaveChangesAsync();
 
-                return new RegistrationResponse(ResponseId.Succesfully, request.Id);
+                return new RegistrationResponse(AuthorizationResponseId.Successfully, request.Id);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new RegistrationResponse(ResponseId.ServerException, request.Id);
+                return new RegistrationResponse(AuthorizationResponseId.ServerException, request.Id);
             }
         }
 
@@ -44,21 +41,21 @@ namespace Server.Controllers
         {
             try
             {
-                User authUser = _context.Users.SingleOrDefault(u => u.Login.ToLower() == request.Login.ToLower());
+                User authUser = Context.Users.SingleOrDefault(u => u.Login.ToLower() == request.Login.ToLower());
                 if (authUser == null)
-                    return new AuthorizationResponse(ResponseId.WrongLogin, request.Id);
+                    return new AuthorizationResponse(AuthorizationResponseId.WrongLogin, request.Id);
 
                 if (authUser.Password != request.Password)
-                    return new AuthorizationResponse(ResponseId.WrongPassword, request.Id);
+                    return new AuthorizationResponse(AuthorizationResponseId.WrongPassword, request.Id);
                 
                 Console.WriteLine("Пользователь {0} авторизовался (подключение № {1})", request.Login, request.Id);
 
-                return new AuthorizationResponse(ResponseId.Succesfully, authUser.Id);
+                return new AuthorizationResponse(AuthorizationResponseId.Successfully, authUser.Id);
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new AuthorizationResponse(ResponseId.ServerException, request.Id);
+                return new AuthorizationResponse(AuthorizationResponseId.ServerException, request.Id);
             }
         }
     }

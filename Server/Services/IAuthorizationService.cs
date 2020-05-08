@@ -25,13 +25,10 @@ namespace Server.Services
 
     public interface IAuthorizationServiceCallback
     {
-        [OperationContract]
+        [OperationContract (IsOneWay = true)]
         void OnUserRegistered(UserRegisteredEventArgs args);
 
-        [OperationContract]
+        [OperationContract (IsOneWay = true)]
         void OnUserLogined(UserLoginedEventArgs args);
-
-        [OperationContract]
-        void BlaBlac();
     }
 }
