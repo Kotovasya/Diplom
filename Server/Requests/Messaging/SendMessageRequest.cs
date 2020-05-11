@@ -13,11 +13,23 @@ namespace Server.Requests.Messaging
         [DataMember]
         public string Text { get; set; }
 
+        [DataMember]
+        public Guid? FileId { get; set; }
+
         public SendMessageRequest(Guid id, string text)
             : base(id)
         {
             Id = id;
             Text = text;
+            FileId = null;
+        }
+
+        public SendMessageRequest(Guid id, string text, Guid fileId)
+            : base(id)
+        {
+            Id = id;
+            Text = text;
+            FileId = fileId;
         }
     }
 }

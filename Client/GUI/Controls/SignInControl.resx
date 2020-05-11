@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="user_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\user_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuTextbox1.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFFSURBVGhD7ZJBbsMwDAT9/1f5Zy2CjpA0mQYSRdEC0gHm
+        ZGp3Dz6yOM/za0SeXY+NG5GYemzMjMTWYAMyJH4tVpwpNWuwwhVSl4sVrZTaPKxkpdTmYAUVUj+PhVdI
+        /RwWXCkz4lhopcyIY6GVMiOOhVbKjDgWWikz4lhopcyIY6GVMiOOhVbKjDgWWikz4lhopcyIY6GVMiOO
+        hVbKjDks+Cafp7Hsm3yex8KbnISxzCYnOVhBk5NhLKvJSR5W8ihn3VjGo5zlYkXPcvon9uZZTtdghZlS
+        sxYrzpD4GmzAjMTWY2NGJOZ6bNw7efbP55L1K5T+Uq3M5KQby2hykoeV9Mjz6fdTWHClzBjHwq6UWf1Y
+        yJUyqw8L2EHmvcce7iQzHXuwm0x17MGOMvcVO95R5v7GDneW2XfsaGeZfceOdvZn9XF8A/u1JTiNFoKE
+        AAAAAElFTkSuQmCC
+</value>
   </data>
 </root>

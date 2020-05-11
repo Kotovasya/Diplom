@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Data.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,16 +12,12 @@ namespace Server.Events.Messaging
     public class SendedMessageEventArgs : ServerEventArgs
     {
         [DataMember]
-        public string Sender { get; set; }
+        public MessageDto Message { get; set; }
 
-        [DataMember]
-        public string Text { get; set; }
-
-        public SendedMessageEventArgs(Guid id, string sender, string text)
+        public SendedMessageEventArgs(Guid id, MessageDto message)
             : base(id)
         {
-            Sender = sender;
-            Text = text;
+            Message = message;
         }
     }
 }

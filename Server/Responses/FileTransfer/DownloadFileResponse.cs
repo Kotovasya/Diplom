@@ -6,26 +6,26 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Responses.Messaging
+namespace Server.Responses.FileTransfer
 {
     [DataContract]
-    public class SendMessageResponse
+    public class DownloadFileResponse
     {
         [DataMember]
-        public MessageDto Message { get; set; }
+        public FileTransferResponseId Result { get; set; }
 
         [DataMember]
-        public MessagingResponseId Result { get; set; }
+        public FileDto File { get; set; }
 
-        public SendMessageResponse(MessagingResponseId result)
+        public DownloadFileResponse(FileTransferResponseId result)
         {
             Result = result;
         }
 
-        public SendMessageResponse(MessageDto message, MessagingResponseId result)
+        public DownloadFileResponse(FileTransferResponseId result, FileDto file)
         {
-            Message = message;
             Result = result;
+            File = file;
         }
     }
 }

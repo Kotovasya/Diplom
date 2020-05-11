@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Server.Services
 {
     [ServiceContract (CallbackContract = typeof(IGlobalServiceCallback))]
-    public interface IGlobalService : IAuthorizationService, IMessagingService
+    public interface IGlobalService : IAuthorizationService, IMessagingService, IFileTransferService
     {
     }
 

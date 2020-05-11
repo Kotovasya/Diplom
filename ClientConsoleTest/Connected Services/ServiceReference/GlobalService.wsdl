@@ -41,7 +41,10 @@
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Messaging" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging" />
-      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Data.Dto" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.FileTransfer" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGlobalService_Registration_InputMessage">
@@ -77,6 +80,18 @@
   <wsdl:message name="IGlobalService_OnSendedMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnSendedMessage" />
   </wsdl:message>
+  <wsdl:message name="IGlobalService_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_DownloadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_DownloadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGlobalService">
     <wsdl:operation name="Registration">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/Registration" message="tns:IGlobalService_Registration_InputMessage" />
@@ -102,6 +117,14 @@
     </wsdl:operation>
     <wsdl:operation name="OnSendedMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IMessagingService/OnSendedMessage" message="tns:IGlobalService_OnSendedMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransferService/UploadFile" message="tns:IGlobalService_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransferService/UploadFileResponse" message="tns:IGlobalService_UploadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransferService/DownloadFile" message="tns:IGlobalService_DownloadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransferService/DownloadFileResponse" message="tns:IGlobalService_DownloadFile_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IGlobalService" type="tns:IGlobalService">
@@ -157,6 +180,24 @@
     </wsdl:operation>
     <wsdl:operation name="OnSendedMessage">
       <soap12:operation soapAction="http://tempuri.org/IMessagingService/OnSendedMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileTransferService/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileTransferService/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

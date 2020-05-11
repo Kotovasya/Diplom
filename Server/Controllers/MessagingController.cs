@@ -21,8 +21,9 @@ namespace Server.Controllers
             try
             {
                 User sender = Context.Users.SingleOrDefault(u => u.Id == request.Id);
-                Context.Messages.Add(new Message(request.Text, sender));
-                return new SendMessageResponse(MessagingResponseId.Successfully);
+                Message message = Context.Messages.Add(new Message(request.Text, request.Id, request.FileId));
+                Context.SaveChanges();
+                return new SendMessageResponse(message.ToDto(), MessagingResponseId.Successfully);
             }
             catch(Exception e)
             {

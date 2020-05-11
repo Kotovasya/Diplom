@@ -13,6 +13,8 @@ using System.Reflection;
 using Server.Responses.Messaging;
 using Server.Requests.Messaging;
 using Server.Events.Messaging;
+using Server.Responses.FileTransfer;
+using Server.Requests.FileTransfer;
 
 namespace Server
 {
@@ -85,13 +87,28 @@ namespace Server
             if (response.Result != MessagingResponseId.Successfully)
                 return response;
 
-            SendedMessageEventArgs args = new SendedMessageEventArgs(request.Id, Connections[request.Id].Login, request.Text);
-            Console.WriteLine("Пользователь {0} отправил сообщение: {1}", args.Sender, args.Text);
+            SendedMessageEventArgs args = new SendedMessageEventArgs(request.Id, response.Message);
+            Console.WriteLine("Пользователь {0} отправил сообщение: {1}", args.Message.Sender, args.Message.Text);
             SendBroadcastMessage<SendedMessageEventArgs>("IMessagingServiceCallback", "OnSendedMessage", args);
 
             return response;
         }
         #endregion
+
+        #region File Service
+        public UploadFileResponse UploadFile(UploadFileRequest request)
+        {
+            UploadFileResponse response = Model.FileTransfer.UploadFile(request);
+            return response;
+        }
+
+        public DownloadFileResponse DownloadFile(DownloadFileRequest request)
+        {
+            DownloadFileResponse response = Model.FileTransfer.DownloadFile(request);
+            return response;
+        }
+        #endregion
+
 
         public void SendBroadcastMessage<TEvent>(string interfaceName, string methodName, TEvent args)
             where TEvent : ServerEventArgs

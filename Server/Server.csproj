@@ -71,8 +71,13 @@
   <ItemGroup>
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\FileTransferController.cs" />
     <Compile Include="Controllers\MessagingController.cs" />
     <Compile Include="Data\DatabaseContext.cs" />
+    <Compile Include="Data\Dto\FileDto.cs" />
+    <Compile Include="Data\Dto\IDto.cs" />
+    <Compile Include="Data\Dto\MessageDto.cs" />
+    <Compile Include="Data\File.cs" />
     <Compile Include="Data\Message.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Events\Authorization\UserLoginedEventArgs.cs" />
@@ -81,6 +86,11 @@
     <Compile Include="Events\ServerEventArgs.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="GlobalService.cs" />
+    <Compile Include="Requests\FileTransfer\DownloadFileRequest.cs" />
+    <Compile Include="Requests\FileTransfer\UploadFileRequest.cs" />
+    <Compile Include="Responses\FileTransfer\DownloadFileResponse.cs" />
+    <Compile Include="Responses\FileTransfer\FileTransferResponseId.cs" />
+    <Compile Include="Responses\FileTransfer\UploadFileResponse.cs" />
     <Compile Include="ServerModel.cs" />
     <Compile Include="ServerUser.cs" />
     <Compile Include="Requests\Authorization\AuthorizationRequest.cs" />
@@ -94,6 +104,7 @@
     <Compile Include="Responses\Authorization\AuthorizationResponse.cs" />
     <Compile Include="Responses\Authorization\RegistrationResponse.cs" />
     <Compile Include="Responses\Authorization\AuthorizationResponseId.cs" />
+    <Compile Include="Services\IFileTransferService.cs" />
     <Compile Include="Services\IGlobalService.cs" />
     <Compile Include="Services\IMessagingService.cs" />
   </ItemGroup>

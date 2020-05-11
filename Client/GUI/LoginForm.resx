@@ -117,8 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="user_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\user_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuGradientPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAABQSURBVChTY2BgaP1PFObh7flPDGaQkJz0nxjMoKI24z8x
+        mMHAeP5/YjCDjcPS/8RgBg+f1f+JwQwhkZv+E4MZEtJ2/CcGM+QU7/tPGO/7DwCmJM5LSr+4QwAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <data name="SignInButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIEAAAAvCAYAAADEtqnOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJ2SURBVHhe7ZwtcNtAFIQNCwsDCwsNAwMDAwsDDQsDzQoL
+        DQMLCwMDAwMLAw0141/o7p72bNnPadOUSG/2m3kjeU86su90p5/nkTHGGGOMMcb8G4vF4vNyubxarVa3
+        6/V66uh1TOTVWPa9n6ZpPqrTX4idY5AxRzLMOIhl69vBidfsoNNZg3hE/ECcZp6jX3GPeISHL9gW/7C/
+        RdzK3j+j0c9O6slP2N6o2QwM+DeGfw/VT+5Du1DzeXBQSQBlzp1kM3DgJddyvJqXgb3b7T6o6Rg0cgqo
+        CfD/iwrTK+DpBfytU/xU8gFNA+UAHOwrQFK6Ax3bS8ktEL6p8UmSSQo8np31GkJZSfL+UpJJCtcDuhIw
+        EdpFIna4guQ8MS+CSQ+85q0+B/2XKtxQQDL8LIJJD/zm8wR63q7/kA1fJcyKYNIDvyf0nMlQhZIVe8Gk
+        J3geBJOe4HkQTHqC50Ew6QmeB8GkJ3geBJOe4HkQTHqC50Ew6QmeB8GkJ3geBJOe4HkQTHqC50Ew6Qme
+        800Shc1m870IJj31peE+CfhOWcJ9EUx66sDvJsGVhOcimPTwswF6jm1bi9D93Gi73X4qokkN/C6fE2J7
+        +KocQvnciBkiySSFo19ev0hqgXjJBganB8kmGbzSw+NShIKYSD4Asd42zFmHINkkAt6ynpQeP0g6hmsD
+        ND7rIFYiHxcnmMGCSz+rj2pNIiuVX69HZAmzEoAHc95wNdLA0SOAOgU08PRaTa9zWpmMYHkaf0/Rgf+k
+        oudBjzh4+fAPv7v/LfH3iuRTmDGIfY27Y7DR8AmhbH0fSIQxMwudnc08R6/D6zpjjDHGGPMWRqPfMqNm
+        RD3xtRIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="SingUpButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIEAAAAvCAYAAADEtqnOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJ2SURBVHhe7ZwtcNtAFIQNCwsDCwsNAwMDAwsDDQsDzQoL
+        DQMLCwMDAwMLAw0141/o7p72bNnPadOUSG/2m3kjeU86su90p5/nkTHGGGOMMcb8G4vF4vNyubxarVa3
+        6/V66uh1TOTVWPa9n6ZpPqrTX4idY5AxRzLMOIhl69vBidfsoNNZg3hE/ECcZp6jX3GPeISHL9gW/7C/
+        RdzK3j+j0c9O6slP2N6o2QwM+DeGfw/VT+5Du1DzeXBQSQBlzp1kM3DgJddyvJqXgb3b7T6o6Rg0cgqo
+        CfD/iwrTK+DpBfytU/xU8gFNA+UAHOwrQFK6Ax3bS8ktEL6p8UmSSQo8np31GkJZSfL+UpJJCtcDuhIw
+        EdpFIna4guQ8MS+CSQ+85q0+B/2XKtxQQDL8LIJJD/zm8wR63q7/kA1fJcyKYNIDvyf0nMlQhZIVe8Gk
+        J3geBJOe4HkQTHqC50Ew6QmeB8GkJ3geBJOe4HkQTHqC50Ew6QmeB8GkJ3geBJOe4HkQTHqC50Ew6Qme
+        800Shc1m870IJj31peE+CfhOWcJ9EUx66sDvJsGVhOcimPTwswF6jm1bi9D93Gi73X4qokkN/C6fE2J7
+        +KocQvnciBkiySSFo19ev0hqgXjJBganB8kmGbzSw+NShIKYSD4Asd42zFmHINkkAt6ynpQeP0g6hmsD
+        ND7rIFYiHxcnmMGCSz+rj2pNIiuVX69HZAmzEoAHc95wNdLA0SOAOgU08PRaTa9zWpmMYHkaf0/Rgf+k
+        oudBjzh4+fAPv7v/LfH3iuRTmDGIfY27Y7DR8AmhbH0fSIQxMwudnc08R6/D6zpjjDHGGPMWRqPfMqNm
+        RD3xtRIAAAAASUVORK5CYII=
+</value>
   </data>
 </root>

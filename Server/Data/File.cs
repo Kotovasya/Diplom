@@ -1,15 +1,16 @@
 namespace Server.Data
 {
+    using Server.Data.Dto;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class User
+    public partial class File : IDto<FileDto>
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public File()
         {
             Messages = new HashSet<Message>();
         }
@@ -17,27 +18,23 @@ namespace Server.Data
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Login { get; set; }
+        [StringLength(255)]
+        public string Name { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
+        public byte[] Data { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
 
-        /// <summary>
-        /// Создает экземпляр клиента
-        /// </summary>
-        /// <param name="id">ID клиента</param>
-        /// <param name="login">Логин клиента (имя)</param>
-        /// <param name="password">Пароль клиента</param>
-        public User(Guid id, string login, string password)
+        public File(string name, byte[] data)
         {
-            Id = id;
-            Login = login;
-            Password = password;
+            Name = name;
+            Data = data;
+        }
+
+        public FileDto ToDto()
+        {
+            return new FileDto(Name, Data);
         }
     }
 }
