@@ -9,6 +9,39 @@ namespace Server.Data
 
     public partial class Message : IDto<MessageDto>
     {
+        /// <summary>
+        /// Создает экземпляр сообщения от сервера
+        /// </summary>
+        /// <param name="text">Текст сообщения</param>
+        public Message(string text)
+        {
+            Text = text;
+        }
+
+        /// <summary>
+        /// Создает экземпляр сообщения от клиента без прикрепленного файла
+        /// </summary>
+        /// <param name="text">Текст сообщения</param>
+        /// <param name="userId">ID клиента</param>
+        public Message(string text, Guid? userId) 
+            : this(text)
+        {
+            UserId = userId;
+        }
+
+        /// <summary>
+        /// Создает экземпляр сообщения от клиента с прикрепленым файлом
+        /// </summary>
+        /// <param name="text">Текст сообщения</param>
+        /// <param name="userId">ID клиента</param>
+        /// <param name="fileId">ID файла</param>
+        public Message(string text, Guid? userId, Guid? fileId) 
+            : this(text, userId)
+        {
+            FileId = fileId;
+        }
+
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
@@ -18,49 +51,17 @@ namespace Server.Data
 
         public Guid? FileId { get; set; }
 
+        public int DialogId { get; set; }
+
         public virtual File File { get; set; }
 
         public virtual User User { get; set; }
 
-        /// <summary>
-        /// Создает экземпляр сообщения от сервера
-        /// </summary>
-        /// <param name="text">Текст сообщения</param>
-        public Message(string text)
-        {
-            Text = text;
-            UserId = null;
-            FileId = null;
-        }
-
-        /// <summary>
-        /// Создает экземпляр сообщения от клиента без прикрепленного файла
-        /// </summary>
-        /// <param name="text">Текст сообщения</param>
-        /// <param name="userId">ID клиента</param>
-        public Message(string text, Guid? userId)
-        {
-            Text = text;
-            UserId = userId;
-            FileId = null;
-        }
-
-        /// <summary>
-        /// Создает экземпляр сообщения от клиента с прикрепленым файлом
-        /// </summary>
-        /// <param name="text">Текст сообщения</param>
-        /// <param name="userId">ID клиента</param>
-        /// <param name="fileId">ID файла</param>
-        public Message(string text, Guid? userId, Guid? fileId)
-        {
-            Text = text;
-            UserId = userId;
-            FileId = fileId;
-        }
+        public virtual Dialog Dialog { get; set; }
 
         public MessageDto ToDto()
         {
-            return new MessageDto(Id, User.Login, Text, FileId, File.Name, File.Data.Length);
+            return new MessageDto(Id, User.ToDto(), Dialog.ToDto(), Text, FileId, File.Name, File.Data.Length);
         }
     }
 }

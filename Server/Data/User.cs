@@ -1,17 +1,19 @@
 namespace Server.Data
 {
+    using Server.Data.Dto;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class User
+    public partial class User : IDto<UserDto>
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             Messages = new HashSet<Message>();
+            Dialogs = new HashSet<Dialog>();
         }
 
         public Guid Id { get; set; }
@@ -27,17 +29,12 @@ namespace Server.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
 
-        /// <summary>
-        /// Создает экземпляр клиента
-        /// </summary>
-        /// <param name="id">ID клиента</param>
-        /// <param name="login">Логин клиента (имя)</param>
-        /// <param name="password">Пароль клиента</param>
-        public User(Guid id, string login, string password)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dialog> Dialogs { get; set; }
+
+        public UserDto ToDto()
         {
-            Id = id;
-            Login = login;
-            Password = password;
+            return new UserDto(Id, Login);
         }
     }
 }

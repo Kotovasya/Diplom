@@ -7,35 +7,35 @@ namespace Server.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class File : IDto<FileDto>
+    public partial class Dialog : IDto<DialogDto>
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public File()
+        public Dialog()
         {
             Messages = new HashSet<Message>();
+            Users = new HashSet<User>();
         }
 
-        public File(string name, byte[] data)
-            : this()
+        public Dialog(string name, ICollection<User> users) 
         {
             Name = name;
-            Data = data;
+            Users = new HashSet<User>(users);
         }
 
-        public Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         public string Name { get; set; }
 
-        public byte[] Data { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
 
-        public FileDto ToDto()
+        public virtual ICollection<User> Users { get; set; }
+
+        public DialogDto ToDto()
         {
-            return new FileDto(Name, Data);
+            return new DialogDto(Id, Name);
         }
     }
 }

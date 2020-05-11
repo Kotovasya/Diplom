@@ -14,6 +14,7 @@ namespace Server
         public AuthorizationController Authorization { get; private set; }
         public MessagingController Messaging { get; private set; }
         public FileTransferController FileTransfer { get; private set; }
+        public DialogsController DialogController { get; private set; }
 
         public ServerModel()
         {
@@ -21,6 +22,7 @@ namespace Server
             Authorization = new AuthorizationController(Database);
             Messaging = new MessagingController(Database);
             FileTransfer = new FileTransferController(Database);
+            DialogController = new DialogsController(Database);
         }
     }
 }

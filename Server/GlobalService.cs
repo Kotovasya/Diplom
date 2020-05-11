@@ -15,6 +15,9 @@ using Server.Requests.Messaging;
 using Server.Events.Messaging;
 using Server.Responses.FileTransfer;
 using Server.Requests.FileTransfer;
+using Server.Responses.Dialogs;
+using Server.Requests.Dialogs;
+using Server.Events.Dialogs;
 
 namespace Server
 {
@@ -109,6 +112,59 @@ namespace Server
         }
         #endregion
 
+        #region Dialog Service
+        public CreateDialogResponse CreateDialog(CreateDialogRequest request)
+        {
+            CreateDialogResponse response = Model.DialogController.CreateDialog(request);
+            if (response.Result != DialogResponseId.Successfully)
+                return response;
+
+            CreateDialogEventArgs args = new CreateDialogEventArgs(request.Id, response.Dialog);
+            Console.WriteLine("Пользователь (GUID {0}) создал диалог {1}", request.Id, request.Name);
+            SendBroadcastMessage<CreateDialogEventArgs>("IDialogServiceCallback", "OnCreatedDialog", args);
+
+            return response;
+        }
+
+        public EditDialogResponse EditDialog(EditDialogRequest request)
+        {
+            EditDialogResponse response = Model.DialogController.EditDialog(request);
+            if (response.Result != DialogResponseId.Successfully)
+                return response;
+
+            EditDialogEventArgs args = new EditDialogEventArgs(request.Id, request.DialogId, request.EditedName);
+            Console.WriteLine("Пользователь (GUID {0}) сменил название диалога ID {1} на {2}", request.Id, request.DialogId, request.EditedName);
+            SendBroadcastMessage<EditDialogEventArgs>("IDialogServiceCallback", "OnEditedDialog", args);
+
+            return response;
+        }
+
+        public DeleteDialogResponse DeleteDialog(DeleteDialogRequest request)
+        {
+            DeleteDialogResponse response = Model.DialogController.DeleteDialog(request);
+            if (response.Result != DialogResponseId.Successfully)
+                return response;
+
+            DeleteDialogEventArgs args = new DeleteDialogEventArgs(request.Id, request.DialogId);
+            Console.WriteLine("Пользователь (GUID {0}) удалил диалог ID {1}", request.Id, request.DialogId);
+            SendBroadcastMessage<DeleteDialogEventArgs>("IDialogServiceCallback", "OnDeletedDialog", args);
+
+            return response;
+        }
+
+        public AddUserToDialogResponse AddUserToDialog(AddUserToDialogRequest request)
+        {
+            AddUserToDialogResponse response = Model.DialogController.AddUserToDialog(request);
+            if (response.Result != DialogResponseId.Successfully)
+                return response;
+
+            AddUserToDialogEventArgs args = new AddUserToDialogEventArgs(request.Id, response.User);
+            Console.WriteLine("Пользователь (GUID {0}) добавил пользователя (GUID {1}) в диалог ID {2}", request.Id, request.UserId, request.DialogId);
+            SendBroadcastMessage<AddUserToDialogEventArgs>("IDialogServiceCallback", "OnUserAdded", args);
+
+            return response;
+        }
+        #endregion
 
         public void SendBroadcastMessage<TEvent>(string interfaceName, string methodName, TEvent args)
             where TEvent : ServerEventArgs

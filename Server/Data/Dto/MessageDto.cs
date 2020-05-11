@@ -14,7 +14,10 @@ namespace Server.Data.Dto
         public long Id { get; set; }
         
         [DataMember]
-        public string Sender { get; set; }
+        public UserDto Sender { get; set; }
+
+        [DataMember]
+        public DialogDto Dialog { get; set; }
 
         [DataMember]
         public string Text { get; set; }
@@ -28,10 +31,11 @@ namespace Server.Data.Dto
         [DataMember]
         public int? FileSize { get; set; }
 
-        public MessageDto(long id, string sender, string text, Guid? fileId, string fileName, int fileSize)
+        public MessageDto(long id, UserDto sender, DialogDto dialog, string text, Guid? fileId, string fileName, int fileSize)
         {
             Id = id;
             Sender = sender;
+            Dialog = dialog
             Text = text;
             FileId = fileId;
             FileName = fileName;
