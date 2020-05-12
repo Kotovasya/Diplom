@@ -20,6 +20,9 @@ namespace Server.Responses.Dialogs
         UserAlreadyInDialog = 4,
 
         [EnumMember]
+        UserNotExist = 8,
+
+        [EnumMember]
         ServerException = 16,
     }
 }

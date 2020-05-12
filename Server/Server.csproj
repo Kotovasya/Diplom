@@ -90,6 +90,8 @@
     <Compile Include="Events\Dialogs\CreateDialogEventArgs.cs" />
     <Compile Include="Events\Dialogs\DeleteDialogEventArgs.cs" />
     <Compile Include="Events\Dialogs\EditDialogEventArgs.cs" />
+    <Compile Include="Events\Dialogs\UserJoinedToDialogEventArgs.cs" />
+    <Compile Include="Events\Dialogs\UserLeavesFromDialogEventArgs.cs" />
     <Compile Include="Events\Messaging\SendedMessageEventArgs.cs" />
     <Compile Include="Events\ServerEventArgs.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -98,6 +100,8 @@
     <Compile Include="Requests\Dialogs\CreateDialogRequest.cs" />
     <Compile Include="Requests\Dialogs\DeleteDialogRequest.cs" />
     <Compile Include="Requests\Dialogs\EditDialogRequest.cs" />
+    <Compile Include="Requests\Dialogs\JoinToDialogRequest.cs" />
+    <Compile Include="Requests\Dialogs\UserLeavesFromDialogRequest.cs" />
     <Compile Include="Requests\FileTransfer\DownloadFileRequest.cs" />
     <Compile Include="Requests\FileTransfer\UploadFileRequest.cs" />
     <Compile Include="Responses\Dialogs\AddUserToDialogResponse.cs" />
@@ -105,6 +109,8 @@
     <Compile Include="Responses\Dialogs\DeleteDialogResponse.cs" />
     <Compile Include="Responses\Dialogs\DialogResponseId.cs" />
     <Compile Include="Responses\Dialogs\EditDialogResponse.cs" />
+    <Compile Include="Responses\Dialogs\JoinToDialogResponse.cs" />
+    <Compile Include="Responses\Dialogs\UserLeavesFromDialogResponse.cs" />
     <Compile Include="Responses\FileTransfer\DownloadFileResponse.cs" />
     <Compile Include="Responses\FileTransfer\FileTransferResponseId.cs" />
     <Compile Include="Responses\FileTransfer\UploadFileResponse.cs" />

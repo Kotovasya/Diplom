@@ -24,6 +24,12 @@ namespace Server.Services
 
         [OperationContract]
         AddUserToDialogResponse AddUserToDialog(AddUserToDialogRequest request);
+
+        [OperationContract]
+        JoinToDialogResponse JoinToDialog(JoinToDialogRequest request);
+
+        [OperationContract]
+        UserLeavesFromDialogResponse LeaveFromDialog(UserLeavesFromDialogRequest request);
     }
 
     public interface IDialogServiceCallback
@@ -39,5 +45,11 @@ namespace Server.Services
 
         [OperationContract(IsOneWay = true)]
         void OnUserAdded(AddUserToDialogEventArgs args);
+
+        [OperationContract(IsOneWay = true)]
+        void OnUserJoined(UserJoinedToDialogEventArgs args);
+
+        [OperationContract(IsOneWay = true)]
+        void OnUserLeaves(UserLeavesFromDialogEventArgs args);
     }
 }

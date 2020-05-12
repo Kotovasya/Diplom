@@ -61,7 +61,7 @@ namespace Server
             Connections.Add(response.Id, new ServerUser(new ConnectionId(response.Id), request.Login, OperationContext.Current));
 
             UserLoginedEventArgs args = new UserLoginedEventArgs(response.Id, request.Login);
-            SendBroadcastMessage<UserLoginedEventArgs>("IAuthorizationServiceCallback", "OnUserLogined", args);
+            SendOtherUsersEvent<UserLoginedEventArgs>("IAuthorizationServiceCallback", "OnUserLogined", args);
 
             return response;
         }
@@ -76,7 +76,7 @@ namespace Server
             Connections.Add(response.Id, new ServerUser(new ConnectionId(response.Id), request.Login, OperationContext.Current));
 
             UserRegisteredEventArgs args = new UserRegisteredEventArgs(response.Id, request.Login);
-            SendBroadcastMessage<UserRegisteredEventArgs>("IAuthorizationServiceCallback", "OnUserRegistered", args);
+            SendOtherUsersEvent<UserRegisteredEventArgs>("IAuthorizationServiceCallback", "OnUserRegistered", args);
 
             return response;
         }
@@ -90,9 +90,9 @@ namespace Server
             if (response.Result != MessagingResponseId.Successfully)
                 return response;
 
-            SendedMessageEventArgs args = new SendedMessageEventArgs(request.Id, response.Message);
-            Console.WriteLine("Пользователь {0} отправил сообщение: {1}", args.Message.Sender, args.Message.Text);
-            SendBroadcastMessage<SendedMessageEventArgs>("IMessagingServiceCallback", "OnSendedMessage", args);
+            SendedMessageEventArgs args = new SendedMessageEventArgs(request.Id, request.DialogId, response.Message);
+            Console.WriteLine("Пользователь GUID {0} отправил сообщение в диалог ID {1}", request.Id, request.DialogId);
+            SendOtherUsersEvent<SendedMessageEventArgs>("IMessagingServiceCallback", "OnSendedMessage", args);
 
             return response;
         }
@@ -121,7 +121,7 @@ namespace Server
 
             CreateDialogEventArgs args = new CreateDialogEventArgs(request.Id, response.Dialog);
             Console.WriteLine("Пользователь (GUID {0}) создал диалог {1}", request.Id, request.Name);
-            SendBroadcastMessage<CreateDialogEventArgs>("IDialogServiceCallback", "OnCreatedDialog", args);
+            SendOtherUsersEvent<CreateDialogEventArgs>("IDialogServiceCallback", "OnCreatedDialog", args);
 
             return response;
         }
@@ -134,7 +134,7 @@ namespace Server
 
             EditDialogEventArgs args = new EditDialogEventArgs(request.Id, request.DialogId, request.EditedName);
             Console.WriteLine("Пользователь (GUID {0}) сменил название диалога ID {1} на {2}", request.Id, request.DialogId, request.EditedName);
-            SendBroadcastMessage<EditDialogEventArgs>("IDialogServiceCallback", "OnEditedDialog", args);
+            SendOtherUsersEvent<EditDialogEventArgs>("IDialogServiceCallback", "OnEditedDialog", args);
 
             return response;
         }
@@ -147,7 +147,7 @@ namespace Server
 
             DeleteDialogEventArgs args = new DeleteDialogEventArgs(request.Id, request.DialogId);
             Console.WriteLine("Пользователь (GUID {0}) удалил диалог ID {1}", request.Id, request.DialogId);
-            SendBroadcastMessage<DeleteDialogEventArgs>("IDialogServiceCallback", "OnDeletedDialog", args);
+            SendOtherUsersEvent<DeleteDialogEventArgs>("IDialogServiceCallback", "OnDeletedDialog", args);
 
             return response;
         }
@@ -158,20 +158,74 @@ namespace Server
             if (response.Result != DialogResponseId.Successfully)
                 return response;
 
-            AddUserToDialogEventArgs args = new AddUserToDialogEventArgs(request.Id, response.User);
+            AddUserToDialogEventArgs args = new AddUserToDialogEventArgs(request.Id, request.DialogId, response.User);
             Console.WriteLine("Пользователь (GUID {0}) добавил пользователя (GUID {1}) в диалог ID {2}", request.Id, request.UserId, request.DialogId);
-            SendBroadcastMessage<AddUserToDialogEventArgs>("IDialogServiceCallback", "OnUserAdded", args);
+            SendOtherUsersEvent<AddUserToDialogEventArgs>("IDialogServiceCallback", "OnUserAdded", args);
+
+            return response;
+        }
+
+        public JoinToDialogResponse JoinToDialog(JoinToDialogRequest request)
+        {
+            JoinToDialogResponse response = Model.DialogController.JoinToDialog(request);
+            if (response.Result != DialogResponseId.Successfully)
+                return response;
+
+            UserJoinedToDialogEventArgs args = new UserJoinedToDialogEventArgs(request.Id, response.User);
+            Console.WriteLine("Пользователь (GUID {0}) вошел в диалог ID {1}", request.Id, request.DialogId);
+            SendOtherUsersEvent<UserJoinedToDialogEventArgs>("IDialogServiceCallback", "OnUserJoined", args);
+
+            return response;
+        }
+
+        public UserLeavesFromDialogResponse LeaveFromDialog(UserLeavesFromDialogRequest request)
+        {
+            UserLeavesFromDialogResponse response = Model.DialogController.LeaveFromDialog(request);
+            if (response.Result != DialogResponseId.Successfully)
+                return response;
+
+            UserLeavesFromDialogEventArgs args = new UserLeavesFromDialogEventArgs(request.Id, request.DialogId, response.User);
+            Console.WriteLine("Пользователь (GUID {0}) вышел из диалога ID {1}", request.Id, request.DialogId);
+            SendOtherUsersEvent<UserLeavesFromDialogEventArgs>("IDialogServiceCallback", "OnUserLeaves", args);
 
             return response;
         }
         #endregion
 
-        public void SendBroadcastMessage<TEvent>(string interfaceName, string methodName, TEvent args)
+        public void SendAllEvent<TEvent>(string interfaceName, string methodName, TEvent args, bool isSendTemporary = false)
+            where TEvent : ServerEventArgs
+        {
+            foreach(var connection in Connections)
+            {
+                if (isSendTemporary || !connection.Value.Connection.IsTemporary)
+                {
+                    IGlobalServiceCallback service = connection.Value.OperationContext.GetCallbackChannel<IGlobalServiceCallback>();
+                    MethodInfo m = service.GetType().GetInterface(interfaceName).GetMethod(methodName);
+                    m.Invoke(service, new object[] { args });
+                }
+            }
+        }
+
+        public void SendOtherUsersEvent<TEvent>(string interfaceName, string methodName, TEvent args, bool isSendTemporary = false)
             where TEvent : ServerEventArgs
         {
             foreach (var connection in Connections)
             {
-                if (connection.Key != args.Id && !connection.Value.Connection.IsTemporary)
+                if (connection.Key != args.Id && (isSendTemporary || !connection.Value.Connection.IsTemporary))
+                {
+                    IGlobalServiceCallback service = connection.Value.OperationContext.GetCallbackChannel<IGlobalServiceCallback>();
+                    MethodInfo m = service.GetType().GetInterface(interfaceName).GetMethod(methodName);
+                    m.Invoke(service, new object[] { args });
+                }
+            }
+        }
+
+        public void SendSpecificUsersEvent<TEvent>(Guid[] users, string interfaceName, string methodName, TEvent args, bool isSendTemporary = false)
+            where TEvent : ServerEventArgs
+        {
+            foreach (var connection in Connections)
+            {
+                if (users.Contains(connection.Key) && (isSendTemporary || !connection.Value.Connection.IsTemporary))
                 {
                     IGlobalServiceCallback service = connection.Value.OperationContext.GetCallbackChannel<IGlobalServiceCallback>();
                     MethodInfo m = service.GetType().GetInterface(interfaceName).GetMethod(methodName);

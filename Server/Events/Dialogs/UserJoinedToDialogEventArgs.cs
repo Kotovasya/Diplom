@@ -9,17 +9,14 @@ using System.Threading.Tasks;
 namespace Server.Events.Dialogs
 {
     [DataContract]
-    public class AddUserToDialogEventArgs : ServerEventArgs
+    public class UserJoinedToDialogEventArgs : ServerEventArgs
     {
         [DataMember]
         public UserDto User { get; set; }
 
-        [DataMember]
-        public int DialogId { get; set; }
-
-        public AddUserToDialogEventArgs(Guid id, int dialogId, UserDto user) : base(id)
+        public UserJoinedToDialogEventArgs(Guid id, UserDto user)
+            : base(id)
         {
-            DialogId = dialogId;
             User = user;
         }
     }
