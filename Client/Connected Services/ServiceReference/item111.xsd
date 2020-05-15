@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Data.Dto" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="CreateDialogResponse">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Server.Data.Dto" minOccurs="0" name="Dialog" nillable="true" type="q1:DialogDto" />
+      <xs:element minOccurs="0" name="Result" type="tns:DialogResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateDialogResponse" nillable="true" type="tns:CreateDialogResponse" />
+  <xs:simpleType name="DialogResponseId">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Successfully">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DialogNotExist">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UserAlreadyInDialog">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UserNotExist">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServerException">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DialogResponseId" nillable="true" type="tns:DialogResponseId" />
+  <xs:complexType name="EditDialogResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:DialogResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditDialogResponse" nillable="true" type="tns:EditDialogResponse" />
+  <xs:complexType name="DeleteDialogResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:DialogResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteDialogResponse" nillable="true" type="tns:DeleteDialogResponse" />
+  <xs:complexType name="AddUserToDialogResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:DialogResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddUserToDialogResponse" nillable="true" type="tns:AddUserToDialogResponse" />
+  <xs:complexType name="JoinToDialogResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:DialogResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JoinToDialogResponse" nillable="true" type="tns:JoinToDialogResponse" />
+  <xs:complexType name="UserLeavesFromDialogResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:DialogResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserLeavesFromDialogResponse" nillable="true" type="tns:UserLeavesFromDialogResponse" />
+</xs:schema>

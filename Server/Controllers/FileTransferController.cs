@@ -20,7 +20,8 @@ namespace Server.Controllers
         {
             try
             {
-                Context.Files.Add(new File(request.Name, request.Data));
+                File file = Context.Files.Add(new File(request.Name, request.Size));
+                file.WriteData(0, request.Data);
                 Context.SaveChanges();
                 return new UploadFileResponse(FileTransferResponseId.Successfully);
             }
@@ -31,20 +32,41 @@ namespace Server.Controllers
             }
         }
 
-        public DownloadFileResponse DownloadFile(DownloadFileRequest request)
+        public UploadPartFileResponse UploadPartFile(UploadPartFileRequest request)
+        {
+            try
+            {
+                File file = Context.Files.Find(request.FileId);
+                if (file == null)
+                    return new UploadPartFileResponse(FileTransferResponseId.FileNotExist);
+
+                file.WriteData(request.Offset, request.Data);
+                Context.SaveChanges();
+                return new UploadPartFileResponse(FileTransferResponseId.Successfully);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return new UploadPartFileResponse(FileTransferResponseId.ServerException);
+            }
+        }
+
+        public DownloadPartFileResponse DownloadPartFile(DownloadPartFileRequest request)
         {
             try
             {
                 File file = Context.Files.SingleOrDefault(f => f.Id == request.FileId);
                 if (file == null)
-                    return new DownloadFileResponse(FileTransferResponseId.FileNotExist);
+                    return new DownloadPartFileResponse(FileTransferResponseId.FileNotExist);
 
-                return new DownloadFileResponse(FileTransferResponseId.Successfully, file.ToDto());
+                byte[] data = file.ReadData(request.Offset, request.Size);
+
+                return new DownloadPartFileResponse(FileTransferResponseId.Successfully, data);
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.Message);
-                return new DownloadFileResponse(FileTransferResponseId.ServerException);
+                return new DownloadPartFileResponse(FileTransferResponseId.ServerException);
             }
         }
     }

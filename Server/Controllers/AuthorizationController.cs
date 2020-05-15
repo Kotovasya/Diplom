@@ -24,11 +24,12 @@ namespace Server.Controllers
                 if (Context.Users.Any(u => u.Login.ToLower() == request.Login.ToLower()))
                     return new RegistrationResponse(AuthorizationResponseId.AlreadyRegister, request.Id);
 
-                Console.WriteLine("Пользователь {0} зарегистрирован (подключение № {1})", request.Login, request.Id);
-                Context.Users.Add(new User(request.Id, request.Login, request.Password));
-                Context.SaveChangesAsync();
+                User newUser = Context.Users.Add(new User(request.Login, request.Password));
+                Context.SaveChanges();
 
-                return new RegistrationResponse(AuthorizationResponseId.Successfully, request.Id);
+                Console.WriteLine("Пользователь {0} зарегистрирован (подключение № {1})", request.Login, newUser.Id);
+
+                return new RegistrationResponse(AuthorizationResponseId.Successfully, newUser.Id);
             }
             catch (Exception e)
             {

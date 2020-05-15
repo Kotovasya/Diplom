@@ -14,12 +14,16 @@ namespace Server.Requests.FileTransfer
         public string Name { get; set; }
 
         [DataMember]
+        public int Size { get; set; }
+
+        [DataMember]
         public byte[] Data { get; set; }
 
-        public UploadFileRequest(Guid id, string name, byte[] data)
+        public UploadFileRequest(Guid id, int size, string name, byte[] data)
             : base(id)
         {
             Name = name;
+            Size = size;
             Data = data;
         }
     }

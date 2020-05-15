@@ -15,11 +15,11 @@ namespace Server.Data
             Messages = new HashSet<Message>();
         }
 
-        public File(string name, byte[] data)
+        public File(string name, int size)
             : this()
         {
             Name = name;
-            Data = data;
+            Data = new byte[size];
         }
 
         public Guid Id { get; set; }
@@ -35,7 +35,30 @@ namespace Server.Data
 
         public FileDto ToDto()
         {
-            return new FileDto(Name, Data);
+            return new FileDto(Id, Name, Data.Length);
+        }
+
+        /// <summary>
+        /// Записывает данные в файл с заданного места
+        /// </summary>
+        /// <param name="offset">Место, с которого записываются данные</param>
+        /// <param name="data">Данные, которые необходимо записать</param>
+        public void WriteData(int offset, byte[] data)
+        {
+            Array.Copy(data, 0, Data, offset, data.Length);
+        }
+
+        /// <summary>
+        /// Читает заданное количество данных из файла с заданного места
+        /// </summary>
+        /// <param name="offset">Место, с которого читаються данные</param>
+        /// <param name="length">Количество байтов, которое необходимо считать</param>
+        /// <returns></returns>
+        public byte[] ReadData(int offset, int length)
+        {
+            byte[] data = new byte[length];
+            Array.Copy(Data, offset, data, 0, length);
+            return data;
         }
     }
 }

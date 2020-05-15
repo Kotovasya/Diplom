@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 namespace Server.Responses.FileTransfer
 {
     [DataContract]
-    public class DownloadFileResponse
+    public class DownloadPartFileResponse
     {
         [DataMember]
         public FileTransferResponseId Result { get; set; }
 
         [DataMember]
-        public FileDto File { get; set; }
+        public byte[] Data { get; set; }
 
-        public DownloadFileResponse(FileTransferResponseId result)
+        public DownloadPartFileResponse(FileTransferResponseId result)
         {
             Result = result;
         }
 
-        public DownloadFileResponse(FileTransferResponseId result, FileDto file)
+        public DownloadPartFileResponse(FileTransferResponseId result, byte[] data)
         {
             Result = result;
-            File = file;
+            Data = data;
         }
     }
 }

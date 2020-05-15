@@ -20,26 +20,18 @@ namespace Server.Data.Dto
         public DialogDto Dialog { get; set; }
 
         [DataMember]
+        public FileDto File { get; set; }
+
+        [DataMember]
         public string Text { get; set; }
 
-        [DataMember]
-        public Guid? FileId { get; set; }
-
-        [DataMember]
-        public string FileName { get; set; }
-
-        [DataMember]
-        public int? FileSize { get; set; }
-
-        public MessageDto(long id, UserDto sender, DialogDto dialog, string text, Guid? fileId, string fileName, int fileSize)
+        public MessageDto(long id, UserDto sender, DialogDto dialog, FileDto file, string text)
         {
             Id = id;
             Sender = sender;
-            Dialog = dialog
+            Dialog = dialog;
+            File = file;
             Text = text;
-            FileId = fileId;
-            FileName = fileName;
-            FileSize = fileSize;
         }
     }
 }

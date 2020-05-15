@@ -16,7 +16,7 @@ namespace Server.Requests.Dialogs
         [DataMember]
         public string EditedName { get; set; }
 
-        public EditDialogRequest(Guid id, Guid dialogId, string newName) : base(id)
+        public EditDialogRequest(Guid id, int dialogId, string newName) : base(id)
         {
             DialogId = dialogId;
             EditedName = newName;

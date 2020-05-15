@@ -8,6 +8,7 @@ using Server.Data.Dto;
 
 namespace Server.Events.Dialogs
 {
+    [DataContract]
     public class UserLeavesFromDialogEventArgs : ServerEventArgs
     {
         [DataMember]

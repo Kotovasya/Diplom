@@ -16,6 +16,13 @@ namespace Server.Data
             Dialogs = new HashSet<Dialog>();
         }
 
+        public User(string login, string password)
+            : this()
+        {
+            Login = login;
+            Password = password;
+        }
+
         public Guid Id { get; set; }
 
         [Required]

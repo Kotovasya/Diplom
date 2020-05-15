@@ -41,7 +41,14 @@
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Messaging" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging" />
-      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Data.Dto" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.FileTransfer" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd15" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGlobalService_Registration_InputMessage">
@@ -77,6 +84,78 @@
   <wsdl:message name="IGlobalService_OnSendedMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnSendedMessage" />
   </wsdl:message>
+  <wsdl:message name="IGlobalService_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_UploadPartFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPartFile" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_UploadPartFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPartFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_DownloadPartFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadPartFile" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_DownloadPartFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadPartFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_CreateDialog_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_CreateDialog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDialogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_EditDialog_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_EditDialog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditDialogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_DeleteDialog_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_DeleteDialog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDialogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_AddUserToDialog_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_AddUserToDialog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToDialogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_JoinToDialog_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_JoinToDialog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToDialogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_LeaveFromDialog_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveFromDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_LeaveFromDialog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveFromDialogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_OnCreatedDialog_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnCreatedDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_OnDeletedDialog_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnDeletedDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_OnEditedDialog_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnEditedDialog" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_OnUserAdded_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserAdded" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_OnUserJoined_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserJoined" />
+  </wsdl:message>
+  <wsdl:message name="IGlobalService_OnUserLeaves_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnUserLeaves" />
+  </wsdl:message>
   <wsdl:portType name="IGlobalService">
     <wsdl:operation name="Registration">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/Registration" message="tns:IGlobalService_Registration_InputMessage" />
@@ -102,6 +181,60 @@
     </wsdl:operation>
     <wsdl:operation name="OnSendedMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IMessagingService/OnSendedMessage" message="tns:IGlobalService_OnSendedMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransferService/UploadFile" message="tns:IGlobalService_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransferService/UploadFileResponse" message="tns:IGlobalService_UploadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadPartFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransferService/UploadPartFile" message="tns:IGlobalService_UploadPartFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransferService/UploadPartFileResponse" message="tns:IGlobalService_UploadPartFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadPartFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransferService/DownloadPartFile" message="tns:IGlobalService_DownloadPartFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransferService/DownloadPartFileResponse" message="tns:IGlobalService_DownloadPartFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDialog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDialogService/CreateDialog" message="tns:IGlobalService_CreateDialog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/CreateDialogResponse" message="tns:IGlobalService_CreateDialog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditDialog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDialogService/EditDialog" message="tns:IGlobalService_EditDialog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/EditDialogResponse" message="tns:IGlobalService_EditDialog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDialog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDialogService/DeleteDialog" message="tns:IGlobalService_DeleteDialog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/DeleteDialogResponse" message="tns:IGlobalService_DeleteDialog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToDialog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDialogService/AddUserToDialog" message="tns:IGlobalService_AddUserToDialog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/AddUserToDialogResponse" message="tns:IGlobalService_AddUserToDialog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinToDialog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDialogService/JoinToDialog" message="tns:IGlobalService_JoinToDialog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/JoinToDialogResponse" message="tns:IGlobalService_JoinToDialog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveFromDialog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDialogService/LeaveFromDialog" message="tns:IGlobalService_LeaveFromDialog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/LeaveFromDialogResponse" message="tns:IGlobalService_LeaveFromDialog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnCreatedDialog">
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/OnCreatedDialog" message="tns:IGlobalService_OnCreatedDialog_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnDeletedDialog">
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/OnDeletedDialog" message="tns:IGlobalService_OnDeletedDialog_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnEditedDialog">
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/OnEditedDialog" message="tns:IGlobalService_OnEditedDialog_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnUserAdded">
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/OnUserAdded" message="tns:IGlobalService_OnUserAdded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnUserJoined">
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/OnUserJoined" message="tns:IGlobalService_OnUserJoined_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnUserLeaves">
+      <wsdl:output wsaw:Action="http://tempuri.org/IDialogService/OnUserLeaves" message="tns:IGlobalService_OnUserLeaves_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IGlobalService" type="tns:IGlobalService">
@@ -157,6 +290,123 @@
     </wsdl:operation>
     <wsdl:operation name="OnSendedMessage">
       <soap12:operation soapAction="http://tempuri.org/IMessagingService/OnSendedMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileTransferService/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPartFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileTransferService/UploadPartFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadPartFile">
+      <soap12:operation soapAction="http://tempuri.org/IFileTransferService/DownloadPartFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/CreateDialog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/EditDialog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/DeleteDialog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/AddUserToDialog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinToDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/JoinToDialog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveFromDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/LeaveFromDialog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnCreatedDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/OnCreatedDialog" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnDeletedDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/OnDeletedDialog" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnEditedDialog">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/OnEditedDialog" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnUserAdded">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/OnUserAdded" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnUserJoined">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/OnUserJoined" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnUserLeaves">
+      <soap12:operation soapAction="http://tempuri.org/IDialogService/OnUserLeaves" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

@@ -16,6 +16,9 @@ namespace Server.Services
         UploadFileResponse UploadFile(UploadFileRequest request);
 
         [OperationContract]
-        DownloadFileResponse DownloadFile(DownloadFileRequest request);
+        UploadPartFileResponse UploadPartFile(UploadPartFileRequest request);
+
+        [OperationContract]
+        DownloadPartFileResponse DownloadPartFile(DownloadPartFileRequest request);
     }
 }

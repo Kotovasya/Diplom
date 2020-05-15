@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Data.Dto" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Server.Events" />
+  <xs:complexType name="CreateDialogEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Server.Events" base="q1:ServerEventArgs">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Server.Data.Dto" minOccurs="0" name="Dialog" nillable="true" type="q2:DialogDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateDialogEventArgs" nillable="true" type="tns:CreateDialogEventArgs" />
+  <xs:complexType name="DeleteDialogEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Server.Events" base="q3:ServerEventArgs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DialogId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteDialogEventArgs" nillable="true" type="tns:DeleteDialogEventArgs" />
+  <xs:complexType name="EditDialogEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Server.Events" base="q4:ServerEventArgs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DialogId" type="xs:int" />
+          <xs:element minOccurs="0" name="EditName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EditDialogEventArgs" nillable="true" type="tns:EditDialogEventArgs" />
+  <xs:complexType name="AddUserToDialogEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Server.Events" base="q5:ServerEventArgs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DialogId" type="xs:int" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Server.Data.Dto" minOccurs="0" name="User" nillable="true" type="q6:UserDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddUserToDialogEventArgs" nillable="true" type="tns:AddUserToDialogEventArgs" />
+  <xs:complexType name="UserJoinedToDialogEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Server.Events" base="q7:ServerEventArgs">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Server.Data.Dto" minOccurs="0" name="User" nillable="true" type="q8:UserDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserJoinedToDialogEventArgs" nillable="true" type="tns:UserJoinedToDialogEventArgs" />
+  <xs:complexType name="UserLeavesFromDialogEventArgs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/Server.Events" base="q9:ServerEventArgs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DialogId" type="xs:int" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Server.Data.Dto" minOccurs="0" name="User" nillable="true" type="q10:UserDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserLeavesFromDialogEventArgs" nillable="true" type="tns:UserLeavesFromDialogEventArgs" />
+</xs:schema>

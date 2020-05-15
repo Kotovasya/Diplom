@@ -105,9 +105,15 @@ namespace Server
             return response;
         }
 
-        public DownloadFileResponse DownloadFile(DownloadFileRequest request)
+        public UploadPartFileResponse UploadPartFile(UploadPartFileRequest request)
         {
-            DownloadFileResponse response = Model.FileTransfer.DownloadFile(request);
+            UploadPartFileResponse response = Model.FileTransfer.UploadPartFile(request);
+            return response;
+        }
+
+        public DownloadPartFileResponse DownloadPartFile(DownloadPartFileRequest request)
+        {
+            DownloadPartFileResponse response = Model.FileTransfer.DownloadPartFile(request);
             return response;
         }
         #endregion

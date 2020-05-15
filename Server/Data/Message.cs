@@ -61,7 +61,7 @@ namespace Server.Data
 
         public MessageDto ToDto()
         {
-            return new MessageDto(Id, User.ToDto(), Dialog.ToDto(), Text, FileId, File.Name, File.Data.Length);
+            return new MessageDto(Id, User.ToDto(), Dialog.ToDto(), File.ToDto(), Text);
         }
     }
 }

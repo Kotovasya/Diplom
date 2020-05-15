@@ -7,21 +7,18 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    static class Program
+    public static class Program
     {
-
-        public static ClientModel Model;
-        
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Model = new ClientModel();
+            ClientModel model = new ClientModel();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new LoginForm(model));
         }
     }
 }

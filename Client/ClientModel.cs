@@ -21,7 +21,7 @@ namespace Client
             }
         }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
         public GlobalServiceClient Service { get; private set; }
 
         public EventHandler<ConnectedEventArgs> Connected;
@@ -57,6 +57,36 @@ namespace Client
         public void OnUserRegistered(UserRegisteredEventArgs args)
         {
             UserRegistered?.Invoke(this, args);
+        }
+
+        public void OnCreatedDialog(CreateDialogEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDeletedDialog(DeleteDialogEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEditedDialog(EditDialogEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnUserAdded(AddUserToDialogEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnUserJoined(UserJoinedToDialogEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnUserLeaves(UserLeavesFromDialogEventArgs args)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="UploadFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:FileTransferResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UploadFileResponse" nillable="true" type="tns:UploadFileResponse" />
+  <xs:simpleType name="FileTransferResponseId">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Successfully">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FileNotExist">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServerException">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FileTransferResponseId" nillable="true" type="tns:FileTransferResponseId" />
+  <xs:complexType name="UploadPartFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" type="tns:FileTransferResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UploadPartFileResponse" nillable="true" type="tns:UploadPartFileResponse" />
+  <xs:complexType name="DownloadPartFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Result" type="tns:FileTransferResponseId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DownloadPartFileResponse" nillable="true" type="tns:DownloadPartFileResponse" />
+</xs:schema>

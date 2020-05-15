@@ -6,7 +6,12 @@
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Authorization" />
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Messaging" />
   <xs:import schemaLocation="http://localhost:8301/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Messaging" />
-  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.FileTransfer" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" />
+  <xs:import schemaLocation="http://localhost:8301/?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" />
   <xs:element name="Registration">
     <xs:complexType>
       <xs:sequence>
@@ -79,6 +84,174 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Server.Events.Messaging" minOccurs="0" name="args" nillable="true" type="q10:SendedMessageEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Server.Requests.FileTransfer" minOccurs="0" name="request" nillable="true" type="q11:UploadFileRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" minOccurs="0" name="UploadFileResult" nillable="true" type="q12:UploadFileResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadPartFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Server.Requests.FileTransfer" minOccurs="0" name="request" nillable="true" type="q13:UploadPartFileRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadPartFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" minOccurs="0" name="UploadPartFileResult" nillable="true" type="q14:UploadPartFileResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadPartFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Server.Requests.FileTransfer" minOccurs="0" name="request" nillable="true" type="q15:DownloadPartFileRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadPartFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Server.Responses.FileTransfer" minOccurs="0" name="DownloadPartFileResult" nillable="true" type="q16:DownloadPartFileResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" minOccurs="0" name="request" nillable="true" type="q17:CreateDialogRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" minOccurs="0" name="CreateDialogResult" nillable="true" type="q18:CreateDialogResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" minOccurs="0" name="request" nillable="true" type="q19:EditDialogRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" minOccurs="0" name="EditDialogResult" nillable="true" type="q20:EditDialogResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" minOccurs="0" name="request" nillable="true" type="q21:DeleteDialogRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" minOccurs="0" name="DeleteDialogResult" nillable="true" type="q22:DeleteDialogResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserToDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" minOccurs="0" name="request" nillable="true" type="q23:AddUserToDialogRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserToDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" minOccurs="0" name="AddUserToDialogResult" nillable="true" type="q24:AddUserToDialogResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinToDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" minOccurs="0" name="request" nillable="true" type="q25:JoinToDialogRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinToDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" minOccurs="0" name="JoinToDialogResult" nillable="true" type="q26:JoinToDialogResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveFromDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Server.Requests.Dialogs" minOccurs="0" name="request" nillable="true" type="q27:UserLeavesFromDialogRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LeaveFromDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Server.Responses.Dialogs" minOccurs="0" name="LeaveFromDialogResult" nillable="true" type="q28:UserLeavesFromDialogResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnCreatedDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" minOccurs="0" name="args" nillable="true" type="q29:CreateDialogEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnDeletedDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" minOccurs="0" name="args" nillable="true" type="q30:DeleteDialogEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnEditedDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" minOccurs="0" name="args" nillable="true" type="q31:EditDialogEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserAdded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" minOccurs="0" name="args" nillable="true" type="q32:AddUserToDialogEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserJoined">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" minOccurs="0" name="args" nillable="true" type="q33:UserJoinedToDialogEventArgs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnUserLeaves">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Server.Events.Dialogs" minOccurs="0" name="args" nillable="true" type="q34:UserLeavesFromDialogEventArgs" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

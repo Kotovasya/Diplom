@@ -8,14 +8,23 @@ using System.Threading.Tasks;
 namespace Server.Requests.FileTransfer
 {
     [DataContract]
-    public class DownloadFileRequest : Request
+    public class UploadPartFileRequest : Request
     {
         [DataMember]
         public Guid FileId { get; set; }
 
-        public DownloadFileRequest(Guid id, Guid fileId) : base(id)
+        [DataMember]
+        public int Offset { get; set; }
+
+        [DataMember]
+        public byte[] Data { get; set; }
+
+        public UploadPartFileRequest(Guid id, Guid fileId, int offset, byte[] data)
+            : base(id)
         {
             FileId = fileId;
+            Offset = offset;
+            Data = data;
         }
     }
 }
