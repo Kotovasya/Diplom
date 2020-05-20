@@ -1278,7 +1278,7 @@ namespace Client.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> IdField;
+        private System.Guid IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -1294,7 +1294,7 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Id {
+        public System.Guid Id {
             get {
                 return this.IdField;
             }
@@ -1411,6 +1411,9 @@ namespace Client.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid FileIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Client.ServiceReference.FileTransferResponseId ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -1420,6 +1423,19 @@ namespace Client.ServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid FileId {
+            get {
+                return this.FileIdField;
+            }
+            set {
+                if ((this.FileIdField.Equals(value) != true)) {
+                    this.FileIdField = value;
+                    this.RaisePropertyChanged("FileId");
+                }
             }
         }
         

@@ -18,7 +18,7 @@ namespace Client
             ClientModel model = new ClientModel();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm(model));
+            Application.Run(new MainForm(model));
         }
     }
 }

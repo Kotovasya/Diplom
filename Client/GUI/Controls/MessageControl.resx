@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="about_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\about_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\cancel_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="green_circle_filled_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\green_circle_filled_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="maximized_window_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\maximized_window_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="message_readed_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\message_readed_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="message_sended_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\message_sended_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="message_sending_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\message_sending_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ok_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\ok_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="red_circle_filled_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\red_circle_filled_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="restore_window_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\restore_window_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user_offline_60px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\user_offline_60px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user_online_60px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\user_online_60px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="warning_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\GUI\Images\warning_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

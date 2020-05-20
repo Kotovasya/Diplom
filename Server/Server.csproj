@@ -100,6 +100,7 @@
     <Compile Include="Requests\Dialogs\CreateDialogRequest.cs" />
     <Compile Include="Requests\Dialogs\DeleteDialogRequest.cs" />
     <Compile Include="Requests\Dialogs\EditDialogRequest.cs" />
+    <Compile Include="Requests\Dialogs\GetMessagesRequest.cs" />
     <Compile Include="Requests\Dialogs\JoinToDialogRequest.cs" />
     <Compile Include="Requests\Dialogs\UserLeavesFromDialogRequest.cs" />
     <Compile Include="Requests\FileTransfer\DownloadPartFileRequest.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Responses\Dialogs\DeleteDialogResponse.cs" />
     <Compile Include="Responses\Dialogs\DialogResponseId.cs" />
     <Compile Include="Responses\Dialogs\EditDialogResponse.cs" />
+    <Compile Include="Responses\Dialogs\GetMessagesResponse.cs" />
     <Compile Include="Responses\Dialogs\JoinToDialogResponse.cs" />
     <Compile Include="Responses\Dialogs\UserLeavesFromDialogResponse.cs" />
     <Compile Include="Responses\FileTransfer\DownloadPartFileResponse.cs" />

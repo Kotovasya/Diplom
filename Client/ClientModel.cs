@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.IO;
 
 namespace Client
 {
@@ -29,6 +30,12 @@ namespace Client
         public EventHandler<SendedMessageEventArgs> MessageReceived;
         public EventHandler<UserLoginedEventArgs> UserLogined;
         public EventHandler<UserRegisteredEventArgs> UserRegistered;
+        public EventHandler<CreateDialogEventArgs> DialogCreated;
+        public EventHandler<EditDialogEventArgs> DialogEdited;
+        public EventHandler<DeleteDialogEventArgs> DialogDeleted;
+        public EventHandler<UserJoinedToDialogEventArgs> UserJoinedToDialog;
+        public EventHandler<AddUserToDialogEventArgs> UserAddedToDialog;
+        public EventHandler<UserLeavesFromDialogEventArgs> UserLeavesFromDialog;
 
         public ClientModel()
         {
@@ -61,32 +68,60 @@ namespace Client
 
         public void OnCreatedDialog(CreateDialogEventArgs args)
         {
-            throw new NotImplementedException();
+            DialogCreated?.Invoke(this, args);
         }
 
         public void OnDeletedDialog(DeleteDialogEventArgs args)
         {
-            throw new NotImplementedException();
+            DialogDeleted?.Invoke(this, args);
         }
 
         public void OnEditedDialog(EditDialogEventArgs args)
         {
-            throw new NotImplementedException();
+            DialogEdited?.Invoke(this, args);
         }
 
         public void OnUserAdded(AddUserToDialogEventArgs args)
         {
-            throw new NotImplementedException();
+            UserAddedToDialog?.Invoke(this, args);
         }
 
         public void OnUserJoined(UserJoinedToDialogEventArgs args)
         {
-            throw new NotImplementedException();
+            UserJoinedToDialog?.Invoke(this, args);
         }
 
         public void OnUserLeaves(UserLeavesFromDialogEventArgs args)
         {
-            throw new NotImplementedException();
+            UserLeavesFromDialog?.Invoke(this, args);
+        }
+
+        public async Task<Guid?> UploadFile(FileStream stream)
+        {
+            byte[] data = new byte[1024];
+            int size = await stream.ReadAsync(data, 0, 1024);
+            int offset = 1024;
+            UploadFileRequest firstRequest = new UploadFileRequest() { Id = Id, Name = stream.Name, Size = size, Data = data};
+            UploadFileResponse firstResponse = await Service.UploadFileAsync(firstRequest);
+            if (firstResponse.Result == FileTransferResponseId.Successfully)
+            {
+                do
+                {
+                    await stream.ReadAsync(data, offset, 1024);
+                    UploadPartFileRequest request = new UploadPartFileRequest() { Id = Id, FileId = firstResponse.FileId, Data = data, Offset = offset };
+                    UploadPartFileResponse response = await Service.UploadPartFileAsync(request);
+                    if (response.Result != FileTransferResponseId.Successfully)
+                        return null;
+                    if (offset == (int)stream.Length)
+                        break;
+                    offset += 1024;
+                    if (offset > stream.Length)
+                        offset = (int)stream.Length;
+                } while (true);
+                return firstResponse.FileId;
+            }
+            else
+                return null;
         }
     }
 }

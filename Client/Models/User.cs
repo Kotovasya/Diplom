@@ -1,25 +1,26 @@
-﻿using System;
+﻿using Client.ServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Data.Dto
+namespace Client.Models
 {
-    [DataContract]
-    public class UserDto
+    public class User
     {
-        [DataMember]
         public Guid Id { get; set; }
-
-        [DataMember]
         public string Name { get; set; }
 
-        public UserDto(Guid id, string name)
+        public User(Guid id, string name)
         {
             Id = id;
             Name = name;
+        }
+
+        public User(UserDto user)
+            : this(user.Id, user.Name)
+        {
         }
     }
 }

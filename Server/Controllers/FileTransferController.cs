@@ -23,7 +23,7 @@ namespace Server.Controllers
                 File file = Context.Files.Add(new File(request.Name, request.Size));
                 file.WriteData(0, request.Data);
                 Context.SaveChanges();
-                return new UploadFileResponse(FileTransferResponseId.Successfully);
+                return new UploadFileResponse(FileTransferResponseId.Successfully, file.Id);
             }
             catch(Exception e)
             {
